@@ -116,7 +116,7 @@ define(['jquery', 'core/custom_interaction_events', 'core/log', 'core/pubsub', '
         var open = trigger.attr('aria-expanded') == 'true';
         if (!open) {
             // Open.
-            trigger.attr('aria-expanded', 'true');
+            $('[data-action=toggle-drawer]').attr('aria-expanded', 'true');
             Aria.unhide(drawer.get());
             drawer.focus();
             body.addClass('drawer-open-' + side);
@@ -127,7 +127,7 @@ define(['jquery', 'core/custom_interaction_events', 'core/log', 'core/pubsub', '
         } else {
             // Close.
             body.removeClass('drawer-open-' + side);
-            trigger.attr('aria-expanded', 'false');
+            $('[data-action=toggle-drawer]').attr('aria-expanded', 'false');
             drawer.addClass('closed').delay(500).queue(function() {
                 // Ensure that during the delay, the drawer wasn't re-opened.
                 if ($(this).hasClass('closed')) {
